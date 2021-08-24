@@ -5,30 +5,50 @@ import { BrowserRouter as Router, Route, Switch, Link, useHistory, useParams } f
 
 import {
     PostsList,
-    UserLogin,
-    Navbar,
-    HomePage
+    UserRegister,
+    HomePage,
+    UserAccount,
+    Navigation
 } from './Components'
 
 const { REACT_APP_BASE_URL } = process.env;
 console.log( "ReactUrl", `${REACT_APP_BASE_URL}`)
-    const App = () =>{
+    
+const App = ({}) =>{
+        const [username, setUsername] = useState('');
+        const [ user, setUser ] = useState('');
+        const [token, setToken] = useState('');
+        
+        const isLoggedIn = () => {
+            setToken(token);
+            setUsername(username);
+            return <>
+                {
+                    token ? <h3>You are logged in</h3> : null
+                }
+                
+            </>
+        }
+        // isLoggedIn(token);
     return <>
         <div className="app">
-            <Navbar />
+            <Navigation username={username} token={token} setUsername = {setUsername} setToken= {setToken}/>
             <div className="content">
                 <Switch>
-                    <Route path ='/Home'>
+                    <Route exact path ='/Home'>
                         <HomePage />
                     </Route>
-                    
-                    <Route exact path = '/Register'>
-                        <UserLogin />
+
+                    <Route exact path ='/account'>
+                        <UserAccount token= {token} setToken={setToken} username={username}  />
                     </Route>
                     
-                    <Route path = '/posts'>
-                        <PostsList />
+                    <Route exact path="/account/:method">
+                        <UserRegister username={username} setUsername = {setUsername} setToken= {setToken} token={token}/>
+                    </Route>
                     
+                    <Route exact path = '/posts'>
+                        <PostsList token={token}/>
                     </Route>
                 </Switch>
             </div>
@@ -44,6 +64,7 @@ console.log( "ReactUrl", `${REACT_APP_BASE_URL}`)
     
     
     </>
+    
 }
 ReactDOM.render(
     <Router>
