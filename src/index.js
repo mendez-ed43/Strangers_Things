@@ -14,22 +14,11 @@ import {
 const { REACT_APP_BASE_URL } = process.env;
 console.log( "ReactUrl", `${REACT_APP_BASE_URL}`)
     
-const App = ({}) =>{
+const App = () =>{
         const [username, setUsername] = useState('');
         const [ user, setUser ] = useState('');
         const [token, setToken] = useState('');
-        
-        const isLoggedIn = () => {
-            setToken(token);
-            setUsername(username);
-            return <>
-                {
-                    token ? <h3>You are logged in</h3> : null
-                }
-                
-            </>
-        }
-        // isLoggedIn(token);
+
     return <>
         <div className="app">
             <Navigation username={username} token={token} setUsername = {setUsername} setToken= {setToken}/>
