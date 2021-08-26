@@ -20,6 +20,22 @@ const App = () =>{
         const [ user, setUser ] = useState('');
         const [token, setToken] = useState('');
 
+        useEffect(() => {
+            try {
+                const getPosts = async () => {
+                    const response = await fetch(`${REACT_APP_BASE_URL}/posts`)
+                    const fetchedPosts = await response.json();
+                    console.log("fetchedPosts" ,fetchedPosts)
+                    const posts = fetchedPosts.data.posts
+                    if(posts) setPosts(posts);
+            } 
+            getPosts();
+            } catch(error) {
+                console.error(error)
+            }
+    
+        }, [token]);
+
     return <>
         <div className="app">
             <Navigation username={username} token={token} setUsername = {setUsername} setToken= {setToken}/>
