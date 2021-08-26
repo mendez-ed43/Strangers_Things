@@ -16,6 +16,7 @@ console.log( "ReactUrl", `${REACT_APP_BASE_URL}`)
     
 const App = () =>{
         const [username, setUsername] = useState('');
+        const [posts, setPosts] = useState([]);
         const [ user, setUser ] = useState('');
         const [token, setToken] = useState('');
 
@@ -29,7 +30,7 @@ const App = () =>{
                     </Route>
 
                     <Route exact path ='/account'>
-                        <UserAccount token= {token} setToken={setToken} username={username}  />
+                        <UserAccount token= {token} setToken={setToken} username={username} setPosts={setPosts} />
                     </Route>
                     
                     <Route exact path="/account/:method">
@@ -37,7 +38,7 @@ const App = () =>{
                     </Route>
                     
                     <Route exact path = '/posts'>
-                        <PostsList token={token}/>
+                        <PostsList posts={posts} setPosts={setPosts} token={token}/>
                     </Route>
                 </Switch>
             </div>

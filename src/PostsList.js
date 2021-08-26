@@ -2,10 +2,10 @@ import React, { useEffect, useState } from 'react';
 
 const { REACT_APP_BASE_URL } = process.env;
 
-const PostsList = () => {
+const PostsList = ({posts, setPosts}) => {
 
-    const [postsInfo, setPosts] = useState([]);
-    console.log("postsInfo" , postsInfo)
+    // const [postsInfo, setPosts] = useState([]);
+    console.log("postsInfo" , posts)
     
     useEffect(() => {
         try {
@@ -27,7 +27,7 @@ const PostsList = () => {
             
         </h1>
             {
-                postsInfo.map (post => <div key = {post._id}>
+                posts.map (post => <div key = {post._id}>
                     <h3>
                         {post.title}
                     </h3>
