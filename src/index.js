@@ -3,12 +3,15 @@ import ReactDOM from 'react-dom';
 // import axios from 'axios';
 import { BrowserRouter as Router, Route, Switch, Link, useHistory, useParams } from 'react-router-dom';
 
+
 import {
     PostsList,
     UserRegister,
     HomePage,
     UserAccount,
-    Navigation
+    Navigation,
+    callApi
+    
 } from './Components'
 
 const { REACT_APP_BASE_URL } = process.env;
@@ -20,16 +23,23 @@ const App = () =>{
         const [ user, setUser ] = useState('');
         const [token, setToken] = useState('');
 
-        useEffect(() => {
-            try {
-                const getPosts = async () => {
-                    const response = await fetch(`${REACT_APP_BASE_URL}/posts`)
-                    const fetchedPosts = await response.json();
-                    console.log("fetchedPosts" ,fetchedPosts)
-                    const posts = fetchedPosts.data.posts
+        const getPosts = async () => {
+            const respObj = await callApi({
+                url: '/posts',
+                token
+            });
+            // const response = await fetch(`${REACT_APP_BASE_URL}/posts`)
+            //         const fetchedPosts = await response.json();
+            //         console.log("fetchedPosts" ,fetchedPosts)
+                    const posts = respObj.data.posts
                     if(posts) setPosts(posts);
-            } 
-            getPosts();
+        };
+
+        
+
+        useEffect(() => {
+            try { 
+                getPosts();
             } catch(error) {
                 console.error(error)
             }
@@ -54,7 +64,7 @@ const App = () =>{
                     </Route>
                     
                     <Route exact path = '/posts'>
-                        <PostsList posts={posts} setPosts={setPosts} token={token}/>
+                        <PostsList posts={posts} setPosts={setPosts} token={token} getPosts={getPosts}/>
                     </Route>
                 </Switch>
             </div>
