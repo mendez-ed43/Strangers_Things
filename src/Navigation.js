@@ -1,4 +1,5 @@
 import { Link, useHistory } from "react-router-dom"
+import SearchBar from "./SearchBar";
 
 const Navigation = ({username, token, setToken, setUsername}) => {
     // const user = JSON.parse(localStorage.getItem('user_token'));
@@ -22,6 +23,8 @@ const Navigation = ({username, token, setToken, setUsername}) => {
                 <Link to= "/Home">Home</Link> | 
                 <Link to="/posts">For Sale</Link> | 
                 <Link to="/account">My Account</Link> | 
+ 
+
                 {/* <Link to="/account/login">Login</Link> */}
                 
                 {

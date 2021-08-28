@@ -3,14 +3,34 @@ import { useParams } from 'react-router';
 
 import { SinglePost, MessageForm } from './Components';
 
-const ViewPost = ({posts, token,}) => {
+const ViewPost = ({posts, token, user, userID}) => {
+    console.log('user: ', user)
+    console.log('userID: ', userID)
+    // console.log('userID: ', user.data._id)
     const [reply, setReply] =useState(false);
 
-    // const handleMessage = () => {
-    //     reply ? 
-    //     // console.log('buttonclicked:')
-    //     <MessageForm/> : null
+    // const handleMessage = (token) => {
         
+    //     console.log('buttonclicked:', token)
+    //     setReply(true);
+
+    //     if (token){
+    //         console.log('token exists');
+    //         return <div>
+    //             Token exist
+    //         </div>
+    //     } else {
+    //         console.log('token does not exist')
+    //         return <div>
+    //             Token does not exist
+    //         </div>
+    //     }
+    // }
+
+        
+    //     return(
+    //     reply ? <MessageForm token={token}/> : null
+    //     )
     // }
     const {postId} = useParams();
     console.log('postId: ', postId);
@@ -21,9 +41,11 @@ const ViewPost = ({posts, token,}) => {
         <SinglePost post={post} />
         
         {
-        //    token ? <button onClick={ () => 
-        //     handleMessage(setReply(true)) }>Send Message?</button>  : null
-        token ? <MessageForm token={token} /> : null
+        //    token ? <button onClick={(token) => 
+        //     handleMessage(token) }>Send Message?</button>  : null
+        //   token && user.data._id !== post.data.author._id ? <MessageForm token={token} /> : null
+            token && userID !== post.author._id ? <MessageForm token={token} /> : null
+
         }
 
     

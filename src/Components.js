@@ -9,3 +9,5 @@ export { default as ViewPost } from './ViewPost';
 export {default as MessageForm } from './MessageForm';
 export {default as SingleMessage } from './SingleMessage';
 export { default as MessagesAll } from './MessagesAll';
+export { default as SearchBar } from './SearchBar';
+

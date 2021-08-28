@@ -32,6 +32,7 @@ const UserAccount = ({ username, token, setPosts }) => {
       }} 
   })
   console.log('postResp: ', postResp)
+  
   const postsResp = await callApi({url: '/posts', token});
 
   setPosts(postsResp.data.posts);

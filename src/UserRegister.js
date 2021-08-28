@@ -4,8 +4,9 @@ import { useParams, useHistory } from 'react-router-dom'
 const { REACT_APP_BASE_URL } = process.env;
 import { callApi } from './Components'
 
-const UserRegister = ({username, setUsername, setToken, setUser, token, setMessages}) => {
+const UserRegister = ({username, setUsername, setToken, setUser, token, setMessages, setUserID}) => {
     const [password, setPassword ] = useState('');
+    const[secondPassword, setSecondPassword] = useState('');
     const params = useParams();
     const history = useHistory();
     console.log('Before Submit: ' , `${params.method}` )
@@ -31,6 +32,7 @@ const UserRegister = ({username, setUsername, setToken, setUser, token, setMessa
               });
             console.log('ParamsUrl: ' , `${params.method}` );
             console.log('token:', loginResp.data.token)
+            
             if(loginResp.data) {
               const userResp = await callApi({url: '/users/me', token: loginResp.data.token});
               console.log('setUser: ', userResp)
@@ -38,11 +40,15 @@ const UserRegister = ({username, setUsername, setToken, setUser, token, setMessa
                 setToken(loginResp.data.token);
                 setUser(userResp.data);
                 setMessages(userResp.data.messages)
-                // console.log('setUser: ', setUser)
+                setUserID(userResp.data._id)
+
                 if (loginResp.data.token) {
                   history.push('/account');
                 }
               }
+              // if (secondPassword !== password){
+              //   return console.error(error);
+              //}
               
             }}>
 
@@ -51,7 +57,7 @@ const UserRegister = ({username, setUsername, setToken, setUser, token, setMessa
             <input type="password" placeholder="password" value={password} onChange={(event) => setPassword(event.target.value)}></input>
             <hr></hr>
             {
-                params.method === 'register' ? <input type="password" placeholder="password" value={password} onChange={(event) => setPassword(event.target.value)}></input> : ''
+                params.method === 'register' ? <input type="password" placeholder="enter password again" value={secondPassword} onChange={(event) => setSecondPassword(event.target.value)}></input> : ''
             }
             
             <button type='submit'>Submit</button>

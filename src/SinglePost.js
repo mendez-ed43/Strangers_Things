@@ -2,7 +2,8 @@ import React, { Children } from 'react';
 
 const SinglePost = ({post, children}) => {
     return post ? <div style={{margin: '.2rem'}}>
-      <h3>{post.title}</h3>
+        <li class= "for_sale">
+        <h3>{post.title}</h3>
         <div>{post.description}</div>
         <div> {post.price} </div>
         <div> {post.willDeliver} </div>
@@ -11,6 +12,7 @@ const SinglePost = ({post, children}) => {
         {
           children
         }
+        </li>
     </div>
     : 'Loading...'
 }
