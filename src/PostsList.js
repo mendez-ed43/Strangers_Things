@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+import { Link } from 'react-router-dom';
 
 import {callApi} from './Components';
 
@@ -21,14 +22,17 @@ const PostsList = ({posts, setPosts, token, getPosts}) => {
     }
 
     
-    console.log("postsInfo" , posts)
+    console.log("posts" , posts)
 
     return <>
         <h1>
             
         </h1>
             {
-                posts.map (post => <SinglePost key = {post._id} post={post} >
+                
+                posts.map (post => <SinglePost key = {post._id} post={post} token={token} >
+                    
+                    <Link to = {`/posts/${post._id}`}>Details</Link>
                     {
                     token && post.isAuthor && <button onClick={() => 
                     handleDelete(post._id) }>DELETE</button>

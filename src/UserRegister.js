@@ -31,14 +31,18 @@ const UserRegister = ({username, setUsername, setToken, setUser, token}) => {
                 }
               });
             console.log('ParamsUrl: ' , `${params.method}` );
+            console.log('setUser: ', setUser)
             if(loginResp.data) {
-              const getUserData = await callApi({url: '/users/me', token: loginResp.data.token});
+              const userResp = await callApi({url: '/users/me', token: loginResp.data.token});
                 // if we got back a token, get the user data
                 setToken(loginResp.data.token);
+                setUser(userResp.data.username);
+                // console.log('setUser: ', setUser)
                 if (loginResp.data.token) {
                   history.push('/account');
                 }
               }
+              
             }}>
 
             <input type="text" placeholder="username" value={username} onChange = {(event) => setUsername(event.target.value)}></input>

@@ -18,6 +18,7 @@
     "url": "https://github.com/mendez-ed43/Strangers_Things/issues"
   },
   "dependencies": {
+    "find": "^0.3.0",
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
     "react-router": "^5.2.0",

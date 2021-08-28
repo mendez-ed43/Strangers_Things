@@ -10,7 +10,8 @@ import {
     HomePage,
     UserAccount,
     Navigation,
-    callApi
+    callApi,
+    ViewPost
     
 } from './Components'
 
@@ -60,11 +61,15 @@ const App = () =>{
                     </Route>
                     
                     <Route exact path="/account/:method">
-                        <UserRegister username={username} setUsername = {setUsername} setToken= {setToken} token={token}/>
+                        <UserRegister username={username} setUsername = {setUsername} setToken= {setToken} token={token} setUser={setUser}/>
+                    </Route>
+                    
+                    <Route exact path = "/posts/:postId">
+                        <ViewPost posts={posts} token={token}/>
                     </Route>
                     
                     <Route exact path = '/posts'>
-                        <PostsList posts={posts} setPosts={setPosts} token={token} getPosts={getPosts}/>
+                    <PostsList posts={posts} setPosts={setPosts} token={token} getPosts={getPosts}/>
                     </Route>
                 </Switch>
             </div>

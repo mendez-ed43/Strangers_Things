@@ -1,5 +1,4 @@
 import { Link, useHistory } from "react-router-dom"
-import { Navbar, Nav,  NavDropdown } from 'react-bootstrap'
 
 const Navigation = ({username, token, setToken, setUsername}) => {
     // const user = JSON.parse(localStorage.getItem('user_token'));
