@@ -9,12 +9,12 @@ import { SinglePost } from './Components'
 const PostsList = ({posts, setPosts, token, getPosts}) => {
     
 
-    const handleDelete = async (postID) => {
-        console.log('url: ', `posts/${postID}`);
+    const handleDelete = async (postId) => {
+        console.log('url: ', `posts/${postId}`);
         
         const respObj = await callApi({
             method: 'DELETE',
-            url: `/posts/${postID}`,
+            url: `/posts/${postId}`,
             token
         });
         console.log('respObj: ', respObj);

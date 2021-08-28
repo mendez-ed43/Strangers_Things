@@ -6,3 +6,4 @@ export { default as UserAccount } from './AccountPage';
 export { default as callApi } from './CallApi';
 export { default as SinglePost } from './SinglePost';
 export { default as ViewPost } from './ViewPost';
+export {default as MessageForm } from './MessageForm';
