@@ -12,7 +12,8 @@ import {
     Navigation,
     callApi,
     ViewPost,
-    MessageForm
+    MessageForm,
+    MessagesAll
     
 } from './Components'
 
@@ -24,6 +25,8 @@ const App = () =>{
         const [posts, setPosts] = useState([]);
         const [ user, setUser ] = useState('');
         const [token, setToken] = useState('');
+        const [messages, setMessages] = useState([]);
+        // const [content, setContent] = useState('');
 
         const getPosts = async () => {
             const respObj = await callApi({
@@ -58,11 +61,14 @@ const App = () =>{
                     </Route>
 
                     <Route exact path ='/account'>
+                        {
+                            token ? <MessagesAll token={token} messages={messages}/> : null
+                        }
                         <UserAccount token= {token} setToken={setToken} username={username} setPosts={setPosts} />
                     </Route>
                     
                     <Route exact path="/account/:method">
-                        <UserRegister username={username} setUsername = {setUsername} setToken= {setToken} token={token} setUser={setUser}/>
+                        <UserRegister setMessages={setMessages} username={username} setUsername = {setUsername} setToken= {setToken} token={token} setUser={setUser}/>
                     </Route>
                     
                     <Route exact path = "/posts/:postId">

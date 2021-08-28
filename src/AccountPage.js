@@ -3,6 +3,8 @@ import { useHistory } from 'react-router-dom'
 const { REACT_APP_BASE_URL } = process.env;
 import callApi from './CallApi';
 
+import {MessagesAll} from './Components'
+
 const UserAccount = ({ username, token, setPosts }) => {
   const [title, setTitle] = useState('');
   const [description, setDescription] = useState('');
@@ -74,14 +76,17 @@ const UserAccount = ({ username, token, setPosts }) => {
     return <>
     <h1> Your Account</h1>
       {
-        username ? <h3>
-        You are logged in as {username} </h3> : ''
+        token ? <h3>
+        You are logged in as {username} </h3> : 'Login, or create new account.'
         
         
       }
+      
       {
         token ? newPostForm() : null
       }
+
+
     
     </>
 };

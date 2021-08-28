@@ -4,8 +4,7 @@ import { useParams, useHistory } from 'react-router-dom'
 const { REACT_APP_BASE_URL } = process.env;
 import { callApi } from './Components'
 
-const UserRegister = ({username, setUsername, setToken, setUser, token}) => {
-    // const [username, setUsername ] = useState('');
+const UserRegister = ({username, setUsername, setToken, setUser, token, setMessages}) => {
     const [password, setPassword ] = useState('');
     const params = useParams();
     const history = useHistory();
@@ -31,7 +30,6 @@ const UserRegister = ({username, setUsername, setToken, setUser, token}) => {
                 }
               });
             console.log('ParamsUrl: ' , `${params.method}` );
-            // console.log('setUser: ', userResp)
             console.log('token:', loginResp.data.token)
             if(loginResp.data) {
               const userResp = await callApi({url: '/users/me', token: loginResp.data.token});
@@ -39,6 +37,7 @@ const UserRegister = ({username, setUsername, setToken, setUser, token}) => {
                 // if we got back a token, get the user data
                 setToken(loginResp.data.token);
                 setUser(userResp.data);
+                setMessages(userResp.data.messages)
                 // console.log('setUser: ', setUser)
                 if (loginResp.data.token) {
                   history.push('/account');

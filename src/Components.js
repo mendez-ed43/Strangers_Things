@@ -7,3 +7,5 @@ export { default as callApi } from './CallApi';
 export { default as SinglePost } from './SinglePost';
 export { default as ViewPost } from './ViewPost';
 export {default as MessageForm } from './MessageForm';
+export {default as SingleMessage } from './SingleMessage';
+export { default as MessagesAll } from './MessagesAll';

@@ -3,6 +3,8 @@ import { Link, useHistory } from "react-router-dom"
 const Navigation = ({username, token, setToken, setUsername}) => {
     // const user = JSON.parse(localStorage.getItem('user_token'));
     const history= useHistory();
+    
+    
     const logOut = () => {
         setUsername('');
         setToken('');
@@ -23,10 +25,13 @@ const Navigation = ({username, token, setToken, setUsername}) => {
                 {/* <Link to="/account/login">Login</Link> */}
                 
                 {
-                    token ? null : <Link to="/account/login">Login</Link>
+                    token ? null : <Link to="/account/login">Login</Link> 
                 }
 
-                 | <Link to ="/account/register">Register</Link>  | 
+                {
+                    token ? null : <Link to ="/account/register">Register</Link> 
+                }
+                  
                 
                 
                 {
@@ -37,7 +42,7 @@ const Navigation = ({username, token, setToken, setUsername}) => {
 
 
             </div>
-        </nav> 
+        </nav>
 
     </>
 }
