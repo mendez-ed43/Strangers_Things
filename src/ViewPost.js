@@ -1,5 +1,5 @@
 import React, {useState}from 'react';
-import { useParams } from 'react-router';
+import { useParams, useHistory } from 'react-router';
 
 import { SinglePost, MessageForm } from './Components';
 
@@ -8,6 +8,11 @@ const ViewPost = ({posts, token, user, userID}) => {
     console.log('userID: ', userID)
     // console.log('userID: ', user.data._id)
     const [reply, setReply] =useState(false);
+    const history = useHistory();
+
+    const handleClick = () => {
+        history.push('/posts')
+    }
 
 
 
@@ -50,6 +55,8 @@ const ViewPost = ({posts, token, user, userID}) => {
             token && userID !== post.author._id ? <MessageForm token={token} /> : null
 
         }
+        <button className='backbutton' onClick={() =>
+        handleClick()}>Back</button>
 
     
     

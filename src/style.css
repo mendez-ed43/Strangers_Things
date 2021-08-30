@@ -10,18 +10,6 @@
     flex-direction: row;
 }
 
-/* .links {
-    display: flex;
-    justify-content:space-evenly;
-    align-items: flex-end;
-} */
-
-/* .flexbox {
-    background-color: teal;
-    height: 300px;
-    align-items: center;
-} */
-
 .mainpostpage {
     width: 200vh;
     background-color: teal;
@@ -65,6 +53,12 @@
     font-weight: bold;
 }
 
+.backbutton {
+    margin-left: 15px;
+    display: flex;
+    align-items: flex-end;
+    flex-direction: column;
+}
 .detail_butn {
     display: flex;
     justify-content:center;
@@ -74,6 +68,18 @@
     font-size: 18px;
     background-color: rgb(255, 255, 255);
     width: 75px;
+}
+
+.navlinks {
+    font-family: monospace;
+    font-size: 15px;
+    display: flex;
+    width: 22vw;
+    justify-content: space-between;
+    background-color: rgb(194, 199, 221);
+
+
+    padding: 10px;
 }
 
 

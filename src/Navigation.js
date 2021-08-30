@@ -20,7 +20,7 @@ const Navigation = ({username, token, setToken, setUsername}) => {
         <nav class="navbar navbar-expand-lg navbar-light bg-light" >
             <div class="container-fluid">
                 <h1 className='nav_title'>Stranger's Things</h1>
-                <ul class="nav nav-pills">
+                <ul className='navlinks'>
                     <Link to= "/Home">Home</Link> | 
                     <Link to="/posts">For Sale</Link> | 
                     <Link to="/account">My Account</Link> | 
