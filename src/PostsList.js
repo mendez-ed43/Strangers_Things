@@ -25,25 +25,23 @@ const PostsList = ({posts, setPosts, token, getPosts, searchTerm, setSearchTerm}
     console.log("posts" , posts)
 
     return <>
-        <h1>
-            Hello
-        </h1>
+    <div className='mainpostpage'>
         <nav>
             {/* <SearchBar setSearchTerm={setSearchTerm} searchTerm={searchTerm} posts={posts} /> */}
             <SearchBar />
         </nav>
             {
                 
-                posts.map (post => <SinglePost key = {post._id} post={post} token={token} >
+                posts.map (post => <SinglePost key = {post._id} post={post} token={token}>
                     
-                    <Link to = {`/posts/${post._id}`}>Details</Link>
+                    <Link to = {`/posts/${post._id}`} className='detail_butn'>Details</Link>
                     {
                     token && post.isAuthor && <button onClick={() => 
-                    handleDelete(post._id) }>DELETE</button>
+                    handleDelete(post._id) } className='delete_button'>DELETE</button>
                     }
                     </SinglePost>)
             }
-         
+    </div>     
     </>
     
 }

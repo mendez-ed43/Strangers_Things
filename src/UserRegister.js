@@ -51,16 +51,17 @@ const UserRegister = ({username, setUsername, setToken, setUser, token, setMessa
               //}
               
             }}>
-
-            <input type="text" placeholder="username" value={username} onChange = {(event) => setUsername(event.target.value)}></input>
-            <hr></hr>
-            <input type="password" placeholder="password" value={password} onChange={(event) => setPassword(event.target.value)}></input>
-            <hr></hr>
-            {
-                params.method === 'register' ? <input type="password" placeholder="enter password again" value={secondPassword} onChange={(event) => setSecondPassword(event.target.value)}></input> : ''
-            }
+            <div class="input-group">
+              <input type="text" aria-label="First name" class="form-control" placeholder="username" value={username} onChange = {(event) => setUsername(event.target.value)}></input>
+              <hr></hr>
+              <input type="password" aria-label="First name" class="form-control" placeholder="password" value={password} onChange={(event) => setPassword(event.target.value)}></input>
+              <hr></hr>
+              {
+                 params.method === 'register' ? <input type="password" placeholder="enter password again" value={secondPassword} onChange={(event) => setSecondPassword(event.target.value)}></input> : ''
+              }
             
-            <button type='submit'>Submit</button>
+              <button type='submit' class="btn btn-primary">Submit</button>
+            </div>
         </form>
     
     </>

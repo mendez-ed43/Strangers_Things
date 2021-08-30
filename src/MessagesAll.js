@@ -10,12 +10,15 @@ const MessagesAll = ({token, messages}) => {
 
 
     return<>
+    <h3 className='messagesheader'>Messages</h3>
+    <div className='allmessages'>
+        
 
-    {
-        messages.map(message => <SingleMessage key = {messages.id} message={message}>
-        </SingleMessage>)
-    }
-
+        {
+            messages.map(message => <SingleMessage key = {messages.id} message={message}>
+            </SingleMessage>)
+        }
+    </div>
 
     </>
 }

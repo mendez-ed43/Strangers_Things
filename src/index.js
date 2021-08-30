@@ -3,6 +3,9 @@ import ReactDOM from 'react-dom';
 // import axios from 'axios';
 import { BrowserRouter as Router, Route, Switch, Link, useHistory, useParams } from 'react-router-dom';
 
+import './bootstrap.min.css';
+import './style.css';
+
 
 import {
     PostsList,
@@ -29,26 +32,7 @@ const App = () =>{
         const [messages, setMessages] = useState([]);
         const [searchTerm, setSearchTerm ] = useState('');
         // const [content, setContent] = useState('');
-
-        const SearchBar = ({searchTerm, setSearchTerm, posts}) => {
-
-            const postMatches = (post, text) => {
         
-        
-            }
-            const filteredPosts = posts.filter(post => postMatches(post, searchTerm));
-            const poststoDisplay = searchTerm.length ? filteredPosts : posts;
-        
-            return<>
-            <div className='search_bar'>
-                {/* <input type='text' onChange = {e => setSearchTerm(e.targer.value)}></input> */}
-                <input type='text' placeholder = 'Search...' onChange = {event => {setSearchTerm(event.target.value)}}/>
-        
-            </div>
-            
-            
-            </>
-        }
 
         const getPosts = async () => {
             const respObj = await callApi({
@@ -95,7 +79,7 @@ const App = () =>{
                     </Route>
                     
                     <Route exact path = "/posts/:postId">
-                        <ViewPost posts={posts} token={token} user={user} userID={userID} SearchBar={SearchBar}/>
+                        <ViewPost posts={posts} token={token} user={user} userID={userID}/>
                     </Route>
                     
                     <Route exact path = '/posts'>

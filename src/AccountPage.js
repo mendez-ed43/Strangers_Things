@@ -46,24 +46,22 @@ const UserAccount = ({ username, token, setPosts }) => {
 
     return <>
     
-      <form onSubmit = {submitPost}>
+      <form onSubmit = {submitPost} className='newpostform'>
         
-        <label>Item for sale: </label>
+        <label className='label'>Item for sale: </label>
         <input type="text" required placeholder="title" value={title} onChange = {(event) => setTitle(event.target.value)}/>
         <hr></hr>
-        <label>Item description:</label>
+        <label className='label'>Item description:</label>
         <input type="text" required placeholder="description" value={description} onChange = {(event) => setDescription(event.target.value)}/>
         <hr></hr>
-        <label>Price of Item: </label>
+        <label className='label'>Price of Item: </label>
         <input type="text" required placeholder="price" value={price} onChange = {(event) => setPrice(event.target.value)}/>
         <hr></hr>
-        <label>Can be delivered?: </label>
+        <label className='label'>Can be delivered?: </label>
         <select onChange= {(event) => setDelivery(event.target.value)}>
           <option value='true'>Yes</option>
           <option value='false'>No</option>
         </select>
-        <hr></hr>
-        <label>For sale by {username}</label>
         <hr></hr>
         <button type='submit'>Add new post</button>
 
@@ -76,6 +74,7 @@ const UserAccount = ({ username, token, setPosts }) => {
 
     return <>
     <h1> Your Account</h1>
+    <div className='accountpage'>
       {
         token ? <h3>
         You are logged in as {username} </h3> : 'Login, or create new account.'
@@ -88,7 +87,7 @@ const UserAccount = ({ username, token, setPosts }) => {
       }
 
 
-    
+    </div>
     </>
 };
  

@@ -17,33 +17,35 @@ const Navigation = ({username, token, setToken, setUsername}) => {
         
         
         
-        <nav className="navbar">
-            <h1>Stranger's Things</h1>
-            <div className="links">
-                <Link to= "/Home">Home</Link> | 
-                <Link to="/posts">For Sale</Link> | 
-                <Link to="/account">My Account</Link> | 
- 
+        <nav class="navbar navbar-expand-lg navbar-light bg-light" >
+            <div class="container-fluid">
+                <h1 className='nav_title'>Stranger's Things</h1>
+                <ul class="nav nav-pills">
+                    <Link to= "/Home">Home</Link> | 
+                    <Link to="/posts">For Sale</Link> | 
+                    <Link to="/account">My Account</Link> | 
+    
 
-                {/* <Link to="/account/login">Login</Link> */}
-                
-                {
-                    token ? null : <Link to="/account/login">Login</Link> 
-                }
+                    {/* <Link to="/account/login">Login</Link> */}
+                    
+                    {
+                        token ? null : <Link to="/account/login">Login</Link> 
+                    }
 
-                {
-                    token ? null : <Link to ="/account/register">Register</Link> 
-                }
-                  
-                
-                
-                {
-                    token ? <button type='logout' onClick={logOut}>Logout</button>  : null
-                }
-                
-                {/* <button type='logout' onClick={logOut}>Logout</button> */}
+                    {
+                        token ? null : <Link to ="/account/register">Register</Link> 
+                    }
+                    
+                    
+                    
+                    {
+                        token ? <button type='logout' onClick={logOut}>Logout</button>  : null
+                    }
+                    
+                    {/* <button type='logout' onClick={logOut}>Logout</button> */}
 
 
+                </ul>
             </div>
         </nav>
 

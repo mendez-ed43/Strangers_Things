@@ -28,7 +28,7 @@ const MessageForm = ({token}) => {
     }
 
     return<>
-    <form onSubmit ={handleSubmit}>
+    <form className='messageform' onSubmit ={handleSubmit}>
         <label>Subject: </label>
         <input type="text" required placeholder="message" value={message} onChange = {(event) => setMessage(event.target.value)}/>
         <hr></hr>

@@ -9,6 +9,8 @@ const ViewPost = ({posts, token, user, userID}) => {
     // console.log('userID: ', user.data._id)
     const [reply, setReply] =useState(false);
 
+
+
     // const handleMessage = (token) => {
         
     //     console.log('buttonclicked:', token)
@@ -38,6 +40,7 @@ const ViewPost = ({posts, token, user, userID}) => {
     console.log('post: ', post)
 
     return <>
+    <div className='singlepostview'>
         <SinglePost post={post} />
         
         {
@@ -50,8 +53,12 @@ const ViewPost = ({posts, token, user, userID}) => {
 
     
     
-    
+    </div>
     </>
 }
+
+// code commented out was meant to use as a button that when clicked would produce the message form to send message to seller.
+// Couldnt get it to work, but do want to fix it eventually, so leaving it in for future use
+// Was also gonna use this same idea for adding a new post, clinking the button would produce the form in either the account page or 'For Sale' page
  
 export default ViewPost;
